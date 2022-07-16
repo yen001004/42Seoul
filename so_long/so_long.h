@@ -6,7 +6,7 @@
 /*   By: yewolee <yewolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 19:29:36 by yewolee           #+#    #+#             */
-/*   Updated: 2022/06/29 18:39:26 by yewolee          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:30:34 by yewolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "mlx_opengl/mlx.h"
 # include "gnl/get_next_line.h"
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
@@ -39,6 +40,7 @@ typedef struct s_game
 	void	*win;
 	int		wid;
 	int		hei;
+	int		prev_wid;
 	int		is_door;
 	int		is_start;
 	int		col_cnt;
@@ -70,6 +72,5 @@ void	setting_img(t_game *game);
 
 char	*ft_strdup_nonl(char *str);
 char	*ft_strjoin_nonl(char *s1, char *s2);
-void	ft_putnbr_fd(int n, int fd);
 
 #endif

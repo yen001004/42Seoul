@@ -6,7 +6,7 @@
 /*   By: yewolee <yewolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:45:28 by yewolee           #+#    #+#             */
-/*   Updated: 2022/06/29 18:43:32 by yewolee          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:30:17 by yewolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	game_init(t_game *game)
 {
+	game->hei = 1;
+	game->wid = 0;
+	game->prev_wid = 0;
 	game->is_door = 0;
 	game->is_start = 0;
 	game->col_cnt = 0;

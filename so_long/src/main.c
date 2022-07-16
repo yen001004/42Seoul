@@ -34,8 +34,7 @@ void	move(t_game *game, int dir)
 		game->str[i] = '0';
 		game->str[i + dir] = 'P';
 		game->walk_cnt++;
-		write(1, "\nwalk : ", 8);
-		ft_putnbr_fd(game->walk_cnt, 1);
+		printf("walk : %d\n", game->walk_cnt);
 		setting_img(game);
 	}
 }
@@ -62,7 +61,7 @@ int	exit_button(void)
 
 void	error_exit(void)
 {
-	write(1, "Error\n", 6);
+	printf("Error\n");
 	exit(0);
 }
 
@@ -81,7 +80,7 @@ int	main(int ac, char *av[])
 	set_mlx_img(&game);
 	setting_img(&game);
 	mlx_hook(game.win, KEY_EVENT_PRESS, 0, &key_press, &game);
-	mlx_hook(game.win, KEY_EVENT_EXIT, 0, exit_button, &game);
+	mlx_hook(game.win, KEY_EVENT_EXIT, 0, &exit_button, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

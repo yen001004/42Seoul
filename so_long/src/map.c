@@ -6,7 +6,7 @@
 /*   By: yewolee <yewolee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:35:21 by yewolee           #+#    #+#             */
-/*   Updated: 2022/06/29 18:43:42 by yewolee          ###   ########.fr       */
+/*   Updated: 2022/07/04 13:31:15 by yewolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,17 @@ void	map_read(t_game *game, char *filename)
 {
 	int		fd;
 	char	*line;
-	int		prev_wid;
 	char	*temp;
 
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
-	game->hei = 1;
+	if (fd < 0)
+		error_exit();
 	check_wall_row_start(line);
 	game->str = ft_strdup_nonl(line);
 	while (line != 0)
 	{
-		prev_wid = ft_strlen(line) - 1;
+		game->prev_wid = ft_strlen(line) - 1;
 		line = get_next_line(fd);
 		if (line != 0)
 		{
@@ -96,7 +96,7 @@ void	map_read(t_game *game, char *filename)
 			temp = ft_strjoin_nonl(game->str, line);
 			game->str = temp;
 			game->hei++;
-			if (prev_wid != game->wid)
+			if (game->prev_wid != game->wid)
 				error_exit();
 		}
 	}
